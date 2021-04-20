@@ -1,0 +1,182 @@
+// * Generate media query based on needs (parameters)
+@mixin breakpoint-device($breakpoint) {
+  $raw-query: map-get($breakpoints, $breakpoint);
+
+  @if $raw-query {
+    $query: if(
+      type-of($raw-query) == 'string',
+      unquote($raw-query),
+      inspect($raw-query)
+    );
+
+    @media #{$query} {
+      @content;
+    }
+  } @else {
+    @error 'No value found for `#{$breakpoint}`.' + 'Please make sure it is defined in `#{$breakpoint}` map.';
+  }
+}
+
+// * Breakpoint-up (min-size)
+@mixin breakpoint-up($size) {
+  $breakpoint-value: map-get($breakpoints-up, $size);
+  @media screen and (min-width: $breakpoint-value) {
+    @content;
+  }
+}
+
+// * Breakpoint-down (max-size)
+@mixin breakpoint-down($size) {
+  $breakpoint-value: map-get($breakpoints-up, $size);
+  @media screen and (max-width: $breakpoint-value) {
+    @content;
+  }
+}
+
+// * Create a range-specific mixin
+@mixin breakpoint-range($minSize, $maxSize) {
+  $breakpoints-up-value: map-get($breakpoints-up, $minSize);
+  $breakpoints-down-value: map-get($breakpoints-down, $maxSize);
+
+  @media screen and (min-width: $breakpoints-up-value) and (max-width: $breakpoints-down-value) {
+    @content;
+  }
+}
+
+// * START OF - GRID MIXINS -
+// Generate grid columns   (using "float")
+@mixin grid-masonry($cols, $mgn) {
+  float: left;
+  margin-right: $mgn;
+  margin-bottom: $mgn;
+  width: ((100% - (($cols - 1) * $mgn)) / $cols);
+
+  &:nth-child(#{$cols}n) {
+    margin-right: 0;
+  }
+}
+
+@mixin grid-template($columns, $areas) {
+  display: grid;
+  grid-column-gap: 10px;
+  grid-template-columns: $columns;
+  grid-template-areas: $areas;
+}
+// * END OF - GRID MIXINS -
+
+// * Set container width and paddings
+@mixin container-width($width, $padding) {
+  width: $width;
+  padding-left: $padding;
+  padding-right: $padding;
+  margin: auto;
+}
+
+@mixin square($size, $radius: 0) {
+  width: $size;
+  height: $size;
+
+  @if $radius !=0 {
+    border-radius: $radius;
+  }
+}
+// * Display an element to center
+@mixin push-center {
+  margin: {
+    left: auto;
+    right: auto;
+  }
+}
+// *  Reset element margins,paddings
+@mixin reset-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+// * Border radius prop for unsupported browser
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius !important;
+  -moz-border-radius: $radius !important;
+  border-radius: $radius !important;
+}
+
+// * Set a underline border to element
+@mixin underline-border {
+  &:after {
+    content: ' ';
+    display: block;
+    width: 100px;
+    height: 2px;
+    background-color: $primary;
+    margin-top: 5px;
+  }
+}
+
+// * Add truncation (..) to an element
+@mixin truncate($truncation-boundary) {
+  max-width: $truncation-boundary;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// * Input placeholders
+
+@mixin input-placeholder {
+  &.placeholder {
+    @content;
+  }
+
+  &:-moz-placeholder {
+    @content;
+  }
+
+  &::-moz-placeholder {
+    @content;
+  }
+
+  &:-ms-input-placeholder {
+    @content;
+  }
+
+  &::-webkit-input-placeholder {
+    @content;
+  }
+}
+
+// * IMAGES MIXINS
+// Background image(hero-image)
+@mixin background-img($source, $position) {
+  background-image: url($source);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: $position;
+}
+
+@mixin webkit-scrollbar {
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px; /* Track */
+    &-track {
+      box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.2);
+    }
+    /* Handle */
+    &-thumb {
+      background: $gray-50;
+      box-shadow: inset 0 0 4px rgba(0, 0, 0, 0.4);
+    }
+    &-thumb:window-inactive {
+      background: $gray-50;
+    }
+  }
+}
+
+.container {
+  @include breakpoint-up('x-large') {
+    max-width: 1350px !important;
+  }
+
+  @include breakpoint-range('large', 'x-large') {
+    max-width: 1250px !important;
+  }
+}

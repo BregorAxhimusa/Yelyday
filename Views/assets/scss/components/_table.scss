@@ -1,0 +1,14 @@
+.table-edit {
+    border: 1px solid $green-color;
+    border: 0 !important;
+    & thead {
+        background-color: #F5F6FA;
+        color: $reserve-color;
+        font-size: 16px;
+        font-weight: 500;
+    }
+    & tr {
+        font-size: 14px;
+        border-bottom: 1px solid $standart-color;
+    }
+}

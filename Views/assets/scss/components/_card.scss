@@ -1,0 +1,86 @@
+.card-profile {
+    margin-top: 150px;
+    & .card-body {
+        & label {
+            display: inline-block;
+            // background-color: $green-color;
+            color: #fff;
+            padding: 13px 40px;
+            border-radius: 0.3rem;
+            cursor: pointer;
+            margin-top: 1rem;
+            font-size: 12px;
+            opacity: 0.9;
+            &:hover {
+                opacity: 1;
+            }
+        }
+        margin: -150px auto 0;
+        & img {
+            box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset, rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+        }
+        & .description-p {
+            font-size: 15px;
+            color: $reserve-color;
+        }
+        & .btn {
+            padding: 13px 40px;
+            font-size: 12px;
+            color: #fff;
+            font-weight: 100;
+            background-color: $green-color;
+            opacity: 0.9;
+            &:hover {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.card-dashboard {
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    & table {
+        border: 0 !important;
+        & thead {
+            background-color: #F5F6FA;
+            color: $reserve-color;
+            font-size: 16px;
+            font-weight: 500;
+        }
+        & tr {
+            font-size: 14px;
+            border-bottom: 1px solid $standart-color;
+        }
+    }
+    & .h6-map {
+        color: $reserve-color;
+        font-size: 12px;
+    }
+    & .satistic-blue-color {
+        color: #56D9FE;
+    }
+    & .satistic-purple-color {
+        color: #A3A0FB;
+    }
+    & .satistic-green-color {
+        color: $green-color;
+    }
+    & .satistic-color-p {
+        color: $reserve-color;
+    }
+    & .span-notification {
+        font-size: 14px;
+    }
+    & .col-notification {
+        border: 3px solid $standart-color;
+    }
+}
+
+.card-costumers {
+    & .card-body {
+        border-bottom: 1px solid $standart-color;
+    }
+    & .about-costumers {
+        color: $reserve-color;
+    }
+}

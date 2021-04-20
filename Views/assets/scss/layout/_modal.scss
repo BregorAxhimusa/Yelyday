@@ -1,0 +1,25 @@
+.modal {
+    & h5 {
+        font-size: 14px;
+    }
+    & .btn {
+        padding: 10px 40px;
+        font-size: 12px;
+        opacity: 0.9;
+        font-weight: 400;
+        &:hover {
+            opacity: 1;
+        }
+        &.save {
+            background-color: $green-color;
+            color: #fff;
+        }
+    }
+    & .img-upload {
+        cursor: pointer;
+    }
+}
+
+.bottom-px {
+    border-bottom: 1px solid $standart-color;
+}

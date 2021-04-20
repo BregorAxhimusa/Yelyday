@@ -1,0 +1,35 @@
+.active-sidebar {
+    background-color: rgba(60, 196, 128, 0.1);
+    border-left: 2px solid $green-color;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    color: $green-color;
+}
+
+.btn-toggle {
+    width: 50px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.active {
+    background-color: $green-color;
+}
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+.dropdown-toggle::after {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+}
+
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: #6d7fcc;
+}
